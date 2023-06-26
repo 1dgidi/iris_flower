@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<style>
+    body {
+        /* background-color: antiquewhite; */
+        font-size: xx-large;
+    }
+
+    .wrapper {
+        /* border: 5px solid; */
+        /* width: 75%; */
+    }
+
+    .center {
+        border: 2px solid;
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -25%);
+        padding: 10px;
+    }
+
+    /* .center-t {
+        margin: auto;
+        width: 95%;
+        padding: 10px;
+    } */
+
+    .butto {
+        margin-left: 37%;
+    }
+
+    .ehead {
+        /* width: 29%; */
+        /* border: 2px solid; */
+        /* margin-top: 5%; */
+        /* margin-left: 35%; */
+        /* padding-left: 3%; */
+    }
+
+    .ebody {
+        padding-top: 3%;
+    }
+
+    p {
+        border: 2px solid red;
+    }
+</style>
+
+{% endblock %}
+
+{% block title %} Upload Model {% endblock %}
+
+{% block content %}
+
+    <div class="center wrapper">
+        <div class="ehead">
+            <h2>Upload Model</h2>
+        </div>
+
+        <div class="ebody">
+            <div class="form-group">
+                <form action="" method="post", enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <p>
+                        {{ ml_model_form.model_file }}
+                    </p>
+                    <input type="submit" value="upload" id='upload_model'>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const uploadedFile = document.getElementById('id_model_file');
+        const maxFileSizeBytes = 2 * 1024 * 1024;
+
+        uploadedFile.setAttribute('accept', '.h5');
+
+        // prevent upload of files greater than 2MB
+        uploadedFile.addEventListener('change', function () {
+            const file = uploadedFile.files[0];
+            if(file && file.size > maxFileSizeBytes) {
+                alert('File size exceeds the allowed limit [2MB]');
+                uploadedFile.value = '';
+            }
+        });
+
+        const uploadBtn = document.getElementById('upload_model');
+        uploadBtn.addEventListener('click', function() {
+            if(uploadedFile.value == '') {
+                alert('You have not selected a file');
+            }
+        });
+    </script>
+
+{% endblock %}

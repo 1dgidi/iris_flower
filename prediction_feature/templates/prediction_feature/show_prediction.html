@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} Show Prediction {% endblock %}
+
+{% block content %}
+
+
+    <div>
+        <ul>
+            <li>Sepal Length: {{ prediction.sepal_length }}</li>
+            <li>Sepal width: {{ prediction.sepal_width }}</li>
+            <li>Petal Length: {{ prediction.petal_length }}</li>
+            <li>Petal width: {{ prediction.petal_width }}</li>
+            <li>Predicted Species: Iris {{ prediction.predicted_species }}</li>
+        </ul>
+    </div>
+    
+
+
+
+
+{% endblock %}

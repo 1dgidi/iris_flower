@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+
+<style>
+    .wrapper {
+        /* border: 5px solid; */
+        margin-top: 5%;
+        margin-left: 10%;
+    }
+
+    .center {
+        border: 5px solid;
+        position: absolute;
+        top: 39%;
+        left: 50%;
+        transform: translate(-50%, -25%);
+        padding: 12px;
+    }
+
+    .ehead {
+        border: 5px solid;
+        margin-left: 32.5%;
+        width: 35%;
+        padding-left: 3.9%;
+        margin-top: 2.5%;
+    }
+
+    .ecard {
+        border: 2px solid;
+        width: 25%;
+        margin-left: 75%;
+    }
+
+    .float-container {
+        /* border: 3px solid #fff; */
+        padding: 20px;
+    }
+
+    .float-child {
+        width: 50%;
+        float: left;
+        padding: 20px;
+        border: 2px solid red;
+    }
+
+    .float-child-1 {
+        width: 50%;
+        float: left;
+        padding: 0;
+        /* border: 2px solid red; */
+    }
+
+    .image {
+        background: #34495e;
+        border: 1px solid #34495e;
+        width: 20em;
+        height: 20em;
+    }
+
+    .image-contain {
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .image-cover {
+        object-fit: cover;
+        object-position: right top;
+    }
+
+    .bda {
+        border: 2px solid blue;
+    }
+
+    .pred-text {
+        font-size: 50px;
+        font-weight: 500;
+        /* border: 2px solid red; */
+    }
+
+    .pred-res {
+        margin-left: 15%;
+        /* border: 2px solid green; */
+    }
+
+    .pred-img {
+        /* border: 2px solid yellow; */
+        width: 50%;
+    }
+</style>
+
+{% endblock %}
+
+{% block title %} Make Prediction {% endblock %}
+
+{% block content %}
+
+    {# {% if prediction.predicted_species == 'NA' %} #}
+    <div class="wrapper">
+        <div class="float-container">
+            <div class="float-child bda">
+                <div class="">
+                    <h2 class="">Make Prediction</h2>
+                </div>
+                <div class="ebody">
+                    <div class="form-group">
+                        <form action="{% url 'prediction_feature:make_prediction' %}" method="post">
+                            {% csrf_token %}
+                    
+                            <p>
+                                {{ prediction_form.sepal_width }}
+                            </p>
+
+                            <p>
+                                {{ prediction_form.sepal_length }}
+                            </p>
+
+                            <p>
+                                {{ prediction_form.petal_width }}
+                            </p>
+
+                            <p>
+                                {{ prediction_form.petal_length }}
+                            </p>
+                            
+                            <input type="submit" value="Predict" class="btn btn-outline-primary butto">
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        
+            <div class="float-child-1">
+                <div class="pred-res">
+                    <div class="pred-img">
+                        {% if prediction.predicted_species == 'NA' %}
+                        <img class="image image-contain" src="{% static 'prediction_feature/images/placeholder.jpg' %}" alt="Card image cap">
+                        {% endif %}
+
+                        {% if prediction.predicted_species == 'setosa' %}
+                            <img class="image image-contain" src="{% static 'prediction_feature/images/setosa.jpg' %}" alt="Card image cap">
+                        {% endif %}
+
+                        {% if prediction.predicted_species == 'virginica' %}
+                            <img class="image image-contain" src="{% static 'prediction_feature/images/virginica.jpg' %}" alt="Card image cap">
+                        {% endif %}
+
+                        {% if prediction.predicted_species == 'versicolor' %}
+                            <img class="image image-contain" src="{% static 'prediction_feature/images/versicolor.jpg' %}" alt="Card image cap">
+                        {% endif %}
+                    </div>
+
+                    <div class="pred-text">
+                        {% if prediction.predicted_species != 'NA' %}
+                            <p class="">Iris {{ prediction.predicted_species | title }}</p>
+                        {% else %}
+                            <p class="">{{ prediction.predicted_species }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+        
+    
+{% endblock %}
