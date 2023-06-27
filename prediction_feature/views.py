@@ -1,12 +1,12 @@
 from django.shortcuts import render, reverse, get_object_or_404
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 
 from .models  import MLModel, Prediction
 from .forms import MLModelForm, PredictionForm
 
 
-@login_required
+# @login_required
 def upload_model(request):
     template_name = 'prediction_feature/upload_model.html'
 
