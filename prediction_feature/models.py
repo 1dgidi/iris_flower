@@ -19,8 +19,7 @@ class Prediction(models.Model):
     petal_length = models.FloatField()
     predicted_species = models.CharField(max_length=50, default='NA')
 
-    # not tested
-    def predict_species(self): # def predict_feature(request, features):
+    def predict_species(self):
         FLOWER_TYPES = {
             0 : 'setosa',
             1 : 'versicolor',
