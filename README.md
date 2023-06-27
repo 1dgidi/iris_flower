@@ -23,12 +23,10 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-### Load data into the database
-```shell
-python manage.py loaddata datadump.json
-```
-
 ### Start the server
 ```shell
 python manage.py runserver
 ```
+
+### Upload iris model
+visit http:127.0.0.1:8000/upload
