@@ -29,4 +29,4 @@ python manage.py runserver
 ```
 
 ### Upload iris model
-visit http:127.0.0.1:8000/upload
+visit [http:127.0.0.1:8000/upload](http:127.0.0.1:8000/upload)
