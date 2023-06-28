@@ -30,3 +30,6 @@ python manage.py runserver
 
 ### Upload iris model
 visit [http:127.0.0.1:8000/upload](http:127.0.0.1:8000/upload)
+
+### Iris Model (example)
+You would find an example model to test the system in the [example-iris-model](https://github.com/1dgidi/iris_flower/tree/master/example-iris-model) folder
