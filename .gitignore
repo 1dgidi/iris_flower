@@ -1,4 +1,4 @@
 *.sqlite3
 __pycache__/
 venv/
-*.h5
+resources/*/*.h5
