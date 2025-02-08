@@ -13,6 +13,21 @@ git clone https://github.com/1dgidi/iris_flower.git
 cd iris_flower
 ```
 
+### Create a virtual environment
+```shell
+python -m venv venv
+```
+
+### Activate the virtual environment
+#### on windows
+```shell
+venv\Scripts\activate
+```
+#### on Unix or MacOS
+```shell
+source venv/bin/activate
+```
+
 ### Install the requirements (Internet connection required)
 ```shell
 pip install -r requirements.txt
